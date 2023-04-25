@@ -35,7 +35,7 @@ export const Header: React.FC = () => {
 
   return (
     <Navbar bg="light" className="p-3 rounded">
-      <Form className="d-flex w-100" onSubmit={handleLoadIssues}>
+      <Form className="d-flex w-100" onSubmit={handleLoadIssues} data-testid="header-form">
         <FormControl
           type="url"
           required
@@ -52,6 +52,7 @@ export const Header: React.FC = () => {
           className="text-nowrap w-20"
           type="submit"
           disabled={disabled}
+          data-testid="load-issues-button"
         >
           {disabled ? 'Loading...' : 'Load issues'}
         </Button>
