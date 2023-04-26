@@ -1,5 +1,6 @@
 {
   "name": "github-kanban-board",
+  "homepage": "https://igor-kashchenko.github.io/github-kanban-board",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
