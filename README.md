@@ -1,46 +1,25 @@
-# Getting Started with Create React App
+# GitHub Issue Tracker App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This app allows users to track issues for a GitHub repository using the GitHub API. The app features a simple drag-and-drop interface with three columns: ToDo (all new issues), In Progress (opened issues with assignee), and Done (closed issues). The app also stores the current issue position (column and order) between search and browser sessions, so users can pick up where they left off.
 
-## Available Scripts
+## DEMO
+[DEMO LINK](https://igor-kashchenko.github.io/github-kanban-board/)
 
-In the project directory, you can run:
+## Installation
+To use the app, simply clone the repository and run `npm install`. Hit the `npm run start`. No additional installation is required.
 
-### `npm start`
+## Usage
+To get started, enter the URL of a GitHub repository in the input field at the top of the page and click "Load". For example: https://github.com/facebook/react.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+The app will then load all issues for the repository using the GitHub API. The issues will be displayed in the certain column based on their's state.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+To move an issue to another column, simply drag and drop it to the desired column.
 
-### `npm test`
+To change the order of issues within a column, simply drag and drop the issue to the desired position. 
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+The app stores the current issue position (column and order) between search and browser sessions, so users can pick up where they left off. If the user switches to another repository and then back to the original repository, they will see all changes they made for that repository.
 
-### `npm run build`
+Users can also visit the profile of the owner of the repository and visit the repository itself by clicking the links under the input field.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Technologies Used
+This app was built using React, Redux, Typescript, React-bootstrap, React-testing-library and the GitHub API.
