@@ -16,18 +16,13 @@ export const Content: React.FC = () => {
   const issuesDone = useAppSelector((state) => state.issues.issuesDone);
   const status = useAppSelector((state) => state.issues.status);
 
-  const haveIssues =
-    issuesToDo.length > 0 &&
-    issuesInProgress.length > 0 &&
-    issuesDone.length > 0;
-
   const dispatch = useAppDispatch();
 
   useEffect(() => {
-    if (status === 'succeeded' && haveIssues) {
+    if (status === 'succeeded') {
       setIsContentVisible(true);
     }
-  }, [status, haveIssues]);
+  }, [status]);
 
   const handleDragEnd = (result: DropResult) => {
     const { source, destination } = result;
