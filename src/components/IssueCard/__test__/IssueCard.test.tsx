@@ -21,18 +21,18 @@ const sampleProps = {
 describe('IssueCard component', () => {
   beforeEach(() => {
     render(
-    <Provider store={store}>
-      <DragDropContext onDragEnd={() => undefined}>
-        <Droppable droppableId="test-droppable">
-          {(provided) => (
-            <div ref={provided.innerRef} {...provided.droppableProps}>
-              <IssueCard {...sampleProps} />
-              {provided.placeholder}
-            </div>
-          )}
-        </Droppable>
-      </DragDropContext>
-    </Provider>
+      <Provider store={store}>
+        <DragDropContext onDragEnd={() => undefined}>
+          <Droppable droppableId="test-droppable">
+            {(provided) => (
+              <div ref={provided.innerRef} {...provided.droppableProps}>
+                <IssueCard {...sampleProps} />
+                {provided.placeholder}
+              </div>
+            )}
+          </Droppable>
+        </DragDropContext>
+      </Provider>
     );
   });
 
@@ -42,7 +42,9 @@ describe('IssueCard component', () => {
   });
 
   it('renders issue number', () => {
-    const numberElement = screen.getByText(new RegExp(`#${sampleProps.number}`));
+    const numberElement = screen.getByText(
+      new RegExp(`#${sampleProps.number}`)
+    );
     expect(numberElement).toBeInTheDocument();
   });
 

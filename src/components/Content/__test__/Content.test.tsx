@@ -62,7 +62,7 @@ describe('Content', () => {
     const store = mockStore(initialStateLoading);
     render(
       <Provider store={store}>
-          <Content />
+        <Content />
       </Provider>
     );
 
@@ -73,7 +73,7 @@ describe('Content', () => {
     const store = mockStore(initialStateFailed);
     render(
       <Provider store={store}>
-          <Content />
+        <Content />
       </Provider>
     );
 
@@ -84,7 +84,7 @@ describe('Content', () => {
     const store = mockStore(initialStateSucceeded);
     render(
       <Provider store={store}>
-          <Content />
+        <Content />
       </Provider>
     );
 

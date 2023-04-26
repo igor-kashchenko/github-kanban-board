@@ -9,7 +9,6 @@ import { fetchIssues } from '../../../redux/issues';
 
 describe('Header', () => {
   it('renders the Header component', () => {
-
     render(
       <Provider store={store}>
         <Header />
@@ -26,13 +25,15 @@ describe('Header', () => {
         <Header />
       </Provider>
     );
-  
+
     const input = screen.getByPlaceholderText('Enter repo URL');
     await act(async () => {
       userEvent.type(input, 'https://github.com/author/repoName');
     });
-  
-    await waitFor(() => expect(input).toHaveValue('https://github.com/author/repoName'));
+
+    await waitFor(() =>
+      expect(input).toHaveValue('https://github.com/author/repoName')
+    );
   });
 
   it('button displays "Load issues" when issues are not being fetched', async () => {
@@ -46,7 +47,7 @@ describe('Header', () => {
 
     expect(button).not.toBeDisabled();
     expect(button).toHaveTextContent('Load issues');
-  })
+  });
 
   it('displays "Loading..." when issues are being fetched', async () => {
     render(
@@ -54,18 +55,18 @@ describe('Header', () => {
         <Header />
       </Provider>
     );
-  
+
     const input = screen.getByPlaceholderText('Enter repo URL');
     const button = screen.getByText(/Load issues/i);
-  
+
     await act(async () => {
       userEvent.type(input, 'https://github.com/author/repoName');
     });
-  
+
     await act(async () => {
       store.dispatch({ type: fetchIssues.pending.type });
     });
-  
+
     await waitFor(() => expect(button).toHaveTextContent('Loading...'));
   });
 
@@ -75,18 +76,21 @@ describe('Header', () => {
         <Header />
       </Provider>
     );
-  
+
     const input = screen.getByPlaceholderText('Enter repo URL');
     const button = screen.getByRole('button');
-  
+
     await act(async () => {
       userEvent.type(input, 'invalid_url');
     });
-  
+
     expect(button).toBeDisabled();
-  
+
     await waitFor(() => {
-      expect(input).toHaveAttribute('title', 'https://github.com/author/repoName');
+      expect(input).toHaveAttribute(
+        'title',
+        'https://github.com/author/repoName'
+      );
     });
   });
 });

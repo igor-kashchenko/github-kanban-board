@@ -15,7 +15,7 @@ const defaultProps = {
 
 type Props = {
   issues?: Issue[];
-}
+};
 
 const mockIssue: Issue = {
   title: 'Test Issue',
@@ -36,25 +36,22 @@ const mockIssue: Issue = {
 
 const mockIssues: Issue[] = [mockIssue];
 
-const MockComponent: React.FC<Props> = ({ issues = []}) => (
+const MockComponent: React.FC<Props> = ({ issues = [] }) => (
   <Provider store={store}>
     <DragDropContext onDragEnd={() => undefined}>
-      <Column {...defaultProps} issues={issues}/>
+      <Column {...defaultProps} issues={issues} />
     </DragDropContext>
   </Provider>
-)
+);
 
 describe('Column', () => {
-  
   it('renders the title', () => {
-    const { getByText } = render(
-      <MockComponent />
-    );
+    const { getByText } = render(<MockComponent />);
     expect(getByText('Test Column')).toBeInTheDocument();
   });
 
   it('renders the issues', () => {
-    const { getByText } = render(<MockComponent issues={mockIssues}/>);
+    const { getByText } = render(<MockComponent issues={mockIssues} />);
     expect(getByText(mockIssue.title)).toBeInTheDocument();
   });
 
@@ -62,5 +59,4 @@ describe('Column', () => {
     const { getByText } = render(<MockComponent issues={[]} />);
     expect(getByText('No issues in this column')).toBeInTheDocument();
   });
-
-})
+});

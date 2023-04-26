@@ -7,23 +7,24 @@ import issuesReducer from '../../../redux/issues';
 import headerReducer from '../../../redux/header';
 import { RootState } from '../../../redux/store';
 
-const createTestStore = (state: RootState) => configureStore({
-  reducer: { 
-    issues: issuesReducer,
-    header: headerReducer,
-  },
-  preloadedState: state,
-});
+const createTestStore = (state: RootState) =>
+  configureStore({
+    reducer: {
+      issues: issuesReducer,
+      header: headerReducer,
+    },
+    preloadedState: state,
+  });
 
 const succeededState: RootState = {
   issues: {
     status: 'succeeded',
     author: 'testAuthor',
     repoName: 'testRepo',
-    issues: [], 
-    issuesInProgress: [], 
-    issuesDone: [], 
-    error: undefined, 
+    issues: [],
+    issuesInProgress: [],
+    issuesDone: [],
+    error: undefined,
     repoStars: 0,
   },
   header: {
@@ -49,33 +50,33 @@ const failedState: RootState = {
 
 describe('Breadcrumbs', () => {
   it('renders breadcrumbs with valid author and repoName', () => {
-    const store = createTestStore(succeededState)
+    const store = createTestStore(succeededState);
 
     render(
       <Provider store={store}>
         <Breadcrumbs />
-      </Provider>,
+      </Provider>
     );
 
     expect(screen.getByText('testAuthor')).toBeInTheDocument();
     expect(screen.getByText('testRepo')).toBeInTheDocument();
     expect(screen.getByText('testAuthor').closest('a')).toHaveAttribute(
       'href',
-      'https://github.com/testAuthor',
+      'https://github.com/testAuthor'
     );
     expect(screen.getByText('testRepo').closest('a')).toHaveAttribute(
       'href',
-      'https://github.com/testAuthor/testRepo',
+      'https://github.com/testAuthor/testRepo'
     );
   });
 
   it('does not render breadcrumbs when status is not "succeeded"', () => {
-    const store = createTestStore(failedState)
+    const store = createTestStore(failedState);
 
     render(
       <Provider store={store}>
         <Breadcrumbs />
-      </Provider>,
+      </Provider>
     );
 
     expect(screen.queryByText('testAuthor')).not.toBeInTheDocument();

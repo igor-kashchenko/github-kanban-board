@@ -7,13 +7,14 @@ import { Provider } from 'react-redux';
 import { Rating } from '../Rating';
 import '@testing-library/jest-dom/extend-expect';
 
-const createTestStore = (state: RootState) => configureStore({
-  reducer: { 
-    issues: issuesReducer,
-    header: headerReducer,
-  },
-  preloadedState: state,
-})
+const createTestStore = (state: RootState) =>
+  configureStore({
+    reducer: {
+      issues: issuesReducer,
+      header: headerReducer,
+    },
+    preloadedState: state,
+  });
 
 describe('Rating component', () => {
   it('renders correct number of stars', () => {
@@ -39,7 +40,7 @@ describe('Rating component', () => {
       <Provider store={store}>
         <Rating />
       </Provider>
-    )
+    );
 
     const starsElement = screen.getByText('250 stars');
     expect(starsElement).toBeInTheDocument();
@@ -68,7 +69,7 @@ describe('Rating component', () => {
       <Provider store={store}>
         <Rating />
       </Provider>
-    )
+    );
 
     const starsElement = screen.getByText('0 stars');
     expect(starsElement).toBeInTheDocument();
@@ -97,15 +98,9 @@ describe('Rating component', () => {
       <Provider store={store}>
         <Rating />
       </Provider>
-    )
-    
+    );
+
     const starsElement = screen.getByText('1 star');
     expect(starsElement).toBeInTheDocument();
   });
 });
-
-
-
-
-
-

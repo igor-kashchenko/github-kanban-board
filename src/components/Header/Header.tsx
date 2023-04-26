@@ -35,7 +35,11 @@ export const Header: React.FC = () => {
 
   return (
     <Navbar bg="light" className="p-3 rounded">
-      <Form className="d-flex w-100" onSubmit={handleLoadIssues} data-testid="header-form">
+      <Form
+        className="d-flex w-100"
+        onSubmit={handleLoadIssues}
+        data-testid="header-form"
+      >
         <FormControl
           type="url"
           required
